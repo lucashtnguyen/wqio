@@ -1,0 +1,26 @@
+codecov:
+  notify:
+    require_ci_to_pass: no
+
+coverage:
+  status:
+    patch:
+      default:
+        target: 85%
+        if_no_uploads: error
+        if_not_found: success
+        if_ci_failed: failure
+    project:
+      default: false
+      library:
+        target: auto
+        if_no_uploads: error
+        if_not_found: success
+        if_ci_failed: error
+        paths: '!wqio/tests/.*'
+      tests:
+        target: 99.5%
+        if_no_uploads: error
+        if_not_found: success
+        if_ci_failed: error
+        paths: 'wqio/tests/.*'

@@ -1,10 +1,3 @@
-from matplotlib.scale import register_scale
-
-from .misc import *
-from .probscale import ProbScale
-from . import figutils
-
-from wqio.testing import NoseWrapper
-test = NoseWrapper().test
-
-register_scale(ProbScale)
+from wqio.utils.dateutils import *  # noqa
+from wqio.utils.misc import *  # noqa
+from wqio.utils.numutils import *  # noqa

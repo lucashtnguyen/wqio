@@ -2,47 +2,45 @@
 #
 # Usage: python setup.py install
 #
-import os
-from setuptools import setup, find_packages
-
-
-def getDataFiles(submodule, folder):
-    datadir = os.path.join('wqio', submodule, folder)
-    files = [d for d in map(
-        lambda x: os.path.join(datadir, x),
-        os.listdir(datadir)
-    )]
-    return files
-
+from setuptools import find_packages, setup
 
 DESCRIPTION = "wqio: Water Quality Inflow/Outflow"
 LONG_DESCRIPTION = DESCRIPTION
 NAME = "wqio"
-VERSION = "0.1"
-AUTHOR = "Paul Hobson (Geosyntec Consultants)"
-AUTHOR_EMAIL = "phobson@geosyntec.com"
-URL = "https://github.com/Geosyntec/wqio"
-DOWNLOAD_URL = "https://github.com/Geosyntec/wqio/archive/master.zip"
+VERSION = "0.7.2"
+AUTHOR = "Paul Hobson (Herrera Environmental Consultants)"
+AUTHOR_EMAIL = "phobson@herrerainc.com"
+URL = "https://github.com/International-BMP-Database/wqio"
+DOWNLOAD_URL = "https://github.com/International-BMP-Database/wqio/archive/main.zip"
 LICENSE = "BSD 3-clause"
 PACKAGES = find_packages()
-PLATFORMS = "Python 2.7, 3.3 and later."
+PLATFORMS = "Python 3.10 and later."
 CLASSIFIERS = [
     "License :: OSI Approved :: BSD License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Intended Audience :: Science/Research",
     "Topic :: Software Development :: Libraries :: Python Modules",
-    'Programming Language :: Python :: 2.7',
-    'Programming Language :: Python :: 3.3',
-    'Programming Language :: Python :: 3.4',
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
 ]
-INSTALL_REQUIRES = ['seaborn']
+INSTALL_REQUIRES = [
+    "numpy",
+    "scipy",
+    "matplotlib",
+    "pandas",
+    "statsmodels",
+    "seaborn",
+    "probscale",
+]
 PACKAGE_DATA = {
-    'wqio.data': [ '*.csv', '*.tex', 'matplotlibrc', ],
-    'wqio.tests.core_tests.baseline_images.core_tests.features_tests': ['*png'],
-    'wqio.tests.core_tests.baseline_images.core_tests.hydro_tests': ['*png'],
-    'wqio.tests.core_tests.baseline_images.core_tests.samples_tests': ['*png'],
-    'wqio.tests.utils_tests.baseline_images.utils_tests.figutils_tests': ['*png'],
+    "wqio.tests._data": ["*.csv", "*.tex", "matplotlibrc"],
+    "wqio.tests._baseline_images.features_tests": ["*png"],
+    "wqio.tests._baseline_images.hydro_tests": ["*png"],
+    "wqio.tests._baseline_images.samples_tests": ["*png"],
+    "wqio.tests._baseline_images.utils_tests.figutils_tests": ["*png"],
 }
 
 setup(
@@ -57,7 +55,6 @@ setup(
     license=LICENSE,
     packages=PACKAGES,
     package_data=PACKAGE_DATA,
-    #data_files=DATA_FILES,
     platforms=PLATFORMS,
     classifiers=CLASSIFIERS,
     install_requires=INSTALL_REQUIRES,
